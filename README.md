@@ -2,6 +2,8 @@
 
 The absolute minimal WordPress plugin template. Just the essentials - activation, deactivation, and code quality tools.
 
+![Header](./assets/banner.png)
+
 ## Features
 
 - **WordPress Coding Standards** - WPCS with PHP_CodeSniffer for WordPress coding standards compliance

@@ -16,7 +16,7 @@
  */
 
 // Prevent direct access.
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 function template_wp_plugin_activate() {
 	// Activation logic here.
 }
-register_activation_hook( __FILE__, 'template_wp_plugin_activate');
+register_activation_hook( __FILE__, 'template_wp_plugin_activate' );
 
 /**
  * Plugin deactivation hook.
@@ -34,4 +34,4 @@ register_activation_hook( __FILE__, 'template_wp_plugin_activate');
 function template_wp_plugin_deactivate() {
 	// Deactivation logic here.
 }
-register_deactivation_hook( __FILE__, 'template_wp_plugin_deactivate');
+register_deactivation_hook( __FILE__, 'template_wp_plugin_deactivate' );

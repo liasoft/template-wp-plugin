@@ -108,13 +108,10 @@ These become available as slash commands in VS Code (e.g., `/ws-commit`, `/ws-re
 The template provides activation and deactivation hooks where you can add your plugin logic:
 
 ```php
-/**
- * Plugin activation hook.
- */
 function template_wp_plugin_activate() {
 	// Activation logic here.
 }
-register_activation_hook( __FILE__, 'template_wp_plugin_activate');
+register_activation_hook( __FILE__, 'template_wp_plugin_activate' );
 
 /**
  * Plugin deactivation hook.
@@ -122,7 +119,7 @@ register_activation_hook( __FILE__, 'template_wp_plugin_activate');
 function template_wp_plugin_deactivate() {
 	// Deactivation logic here.
 }
-register_deactivation_hook( __FILE__, 'template_wp_plugin_deactivate');
+register_deactivation_hook( __FILE__, 'template_wp_plugin_deactivate' );
 ```
 
 Add your plugin's main functionality after the hooks:

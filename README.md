@@ -65,7 +65,7 @@ composer run lint:fix
 
 ```
 your-plugin-name/
-├── .editorconfig          # Editor configuration
+├── .editorconfig         # Editor configuration
 ├── .gitignore            # Git ignore rules
 ├── phpcs.xml             # WordPress Coding Standards config
 ├── composer.json         # PHP dependencies and scripts
@@ -97,20 +97,18 @@ The template provides activation and deactivation hooks where you can add your p
 /**
  * Plugin activation hook.
  */
-function template_wp_plugin_activate()
-{
-    // Add your activation logic here
-    // Example: Create database tables, add default options, etc.
+function template_wp_plugin_activate() {
+	// Activation logic here.
 }
+register_activation_hook( __FILE__, 'template_wp_plugin_activate');
 
 /**
  * Plugin deactivation hook.
  */
-function template_wp_plugin_deactivate()
-{
-    // Add your deactivation logic here
-    // Example: Clean up temporary data, clear caches, etc.
+function template_wp_plugin_deactivate() {
+	// Deactivation logic here.
 }
+register_deactivation_hook( __FILE__, 'template_wp_plugin_deactivate');
 ```
 
 Add your plugin's main functionality after the hooks:

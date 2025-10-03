@@ -4,8 +4,8 @@ The absolute minimal WordPress plugin template. Just the essentials - activation
 
 ## Features
 
-- **WordPress Coding Standards** - WPCS with PHP_CodeSniffer for proper WordPress code formatting
-- **EditorConfig** - Consistent editor settings
+- **WordPress Coding Standards** - WPCS with PHP_CodeSniffer for WordPress coding standards compliance
+- **EditorConfig** - Consistent editor settings across different IDEs
 - **Minimal Structure** - Just the bare essentials, no bloat
 - **Plugin Hooks** - Basic activation and deactivation hooks ready to use
 
@@ -20,14 +20,17 @@ git clone https://github.com/liasoft/template-wp-plugin.git my-new-plugin
 cd my-new-plugin
 ```
 
-### 2. Rename Your Plugin
+### 2. Customize Your Plugin
 
-Replace the following in `wp-plugin.php`:
+1. **Rename the main plugin file**: `wp-plugin.php` → `your-plugin-name.php`
 
-- `Template WordPress Plugin` → `Your Plugin Name` (Plugin Name header)
-- `A minimal boilerplate for WordPress plugins` → `Your plugin description`
-- `Your Name` → Your actual name
-- `https://yourwebsite.com` → Your website URL
+2. **Update plugin headers** in your renamed file:
+   - `Template WordPress Plugin` → `Your Plugin Name`
+   - `A minimal boilerplate for WordPress plugins` → `Your plugin description`
+   - `Your Name` → Your actual name
+   - `https://yourwebsite.com` → Your website URL
+
+3. **Update function names** to match your plugin (replace `template_wp_plugin` prefix)
 
 
 ### 3. Install Development Dependencies
@@ -44,7 +47,7 @@ composer install
 # Check code against WordPress Coding Standards
 composer run lint
 
-# Fix code style issues automatically
+# Auto-fix coding standards violations where possible
 composer run lint:fix
 ```
 
@@ -66,9 +69,11 @@ your-plugin-name/
 ├── .gitignore            # Git ignore rules
 ├── phpcs.xml             # WordPress Coding Standards config
 ├── composer.json         # PHP dependencies and scripts
-├── LICENSE               # GPL license
+├── composer.lock         # Dependency lock file
+├── LICENSE               # Apache 2.0 license
 ├── README.md             # This file
-└── wp-plugin.php # Main plugin file (rename this)
+├── wp-plugin.php         # Main plugin file (rename this)
+└── vendor/               # Composer dependencies (after install)
 ```
 
 ## What's Included
@@ -80,9 +85,9 @@ your-plugin-name/
 - Plugin deactivation hook (empty, ready for your code)
 
 ### Development Tools
-- **WordPress Coding Standards**: Ensures your code follows WordPress best practices
-- **PHP_CodeSniffer**: Automated code quality checking
-- **EditorConfig**: Consistent formatting across different editors
+- **WordPress Coding Standards**: Ensures your code follows WordPress coding standards and best practices
+- **PHP_CodeSniffer**: Automated code standards checking and fixing
+- **EditorConfig**: Consistent code formatting across different editors and IDEs
 
 ## Adding Your Features
 
@@ -115,7 +120,7 @@ Add your plugin's main functionality after the hooks:
 // Example: Register shortcodes, add admin menus, enqueue scripts, etc.
 ```
 
-Oh, and rename the functions with your prefix - and you're good to go.
+**Important**: Remember to rename the functions with your own unique prefix to avoid conflicts with other plugins.
 
 ## Why So Minimal?
 

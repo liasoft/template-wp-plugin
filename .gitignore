@@ -31,9 +31,6 @@ debug.log
 *.tmp
 *.temp
 
-# Composer
-composer.lock
-
 # npm
 package-lock.json
 yarn.lock

@@ -3,7 +3,7 @@
  * Plugin Name: Template WordPress Plugin
  * Plugin URI: https://github.com/liasoft/template-wp-plugin
  * Description: A minimal boilerplate for WordPress plugins.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Liasoft GmbH
  * Author URI: https://github.com/liasoft/template-wp-plugin
  * License: Apache 2.0

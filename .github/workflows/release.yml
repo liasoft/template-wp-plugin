@@ -22,7 +22,7 @@ jobs:
         tools: composer
         
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+      run: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
       
     - name: Run final lint check
       run: composer run lint

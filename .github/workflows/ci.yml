@@ -47,7 +47,7 @@ jobs:
     - name: Check if plugin file follows WordPress standards
       run: |
         echo "Checking main plugin file..."
-        ./vendor/bin/phpcs template-wp-plugin.php --standard=WordPress --report=summary
+        ./vendor/bin/phpcs wp-plugin.php --standard=WordPress --report=summary
         
   security:
     name: Security Audit

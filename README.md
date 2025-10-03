@@ -16,23 +16,19 @@ The absolute minimal WordPress plugin template. Just the essentials - activation
 Click "Use this template" on GitHub or clone this repository:
 
 ```bash
-git clone https://github.com/svnscha/template-wp-plugin.git my-new-plugin
+git clone https://github.com/liasoft/template-wp-plugin.git my-new-plugin
 cd my-new-plugin
 ```
 
 ### 2. Rename Your Plugin
 
-Replace the following in `template-wp-plugin.php`:
+Replace the following in `wp-plugin.php`:
 
 - `Template WordPress Plugin` → `Your Plugin Name` (Plugin Name header)
 - `A minimal boilerplate for WordPress plugins` → `Your plugin description`
 - `Your Name` → Your actual name
 - `https://yourwebsite.com` → Your website URL
 
-**Rename the main file:**
-```bash
-mv template-wp-plugin.php your-plugin-name.php
-```
 
 ### 3. Install Development Dependencies
 
@@ -72,7 +68,7 @@ your-plugin-name/
 ├── composer.json         # PHP dependencies and scripts
 ├── LICENSE               # GPL license
 ├── README.md             # This file
-└── template-wp-plugin.php # Main plugin file (rename this)
+└── wp-plugin.php # Main plugin file (rename this)
 ```
 
 ## What's Included
@@ -119,6 +115,8 @@ Add your plugin's main functionality after the hooks:
 // Example: Register shortcodes, add admin menus, enqueue scripts, etc.
 ```
 
+Oh, and rename the functions with your prefix - and you're good to go.
+
 ## Why So Minimal?
 
 This template follows the principle of **absolute minimalism**:
@@ -139,4 +137,4 @@ This template is licensed under the Apache 2.0 License.
 
 - [WordPress Plugin Handbook](https://developer.wordpress.org/plugins/)
 - [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/)
-- [GitHub Issues](https://github.com/svnscha/template-wp-plugin/issues)
+- [GitHub Issues](https://github.com/liasoft/template-wp-plugin/issues)

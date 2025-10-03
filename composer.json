@@ -1,5 +1,5 @@
 {
-    "name": "svnscha/template-wp-plugin",
+    "name": "liasoft/template-wp-plugin",
     "description": "A minimal WordPress plugin template",
     "type": "wordpress-plugin",
     "license": "Apache-2.0",

@@ -35,12 +35,12 @@ jobs:
         mkdir -p release
         rsync -av --exclude-from=.gitignore --exclude='.git*' --exclude='release' . release/
         cd release
-        zip -r ../template-wp-plugin.zip .
+        zip -r ../wp-plugin.zip .
         
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
-        files: template-wp-plugin.zip
+        files: wp-plugin.zip
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

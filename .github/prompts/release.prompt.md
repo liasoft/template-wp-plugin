@@ -31,7 +31,7 @@ Commands to Use:
 - `git push origin vX.Y.Z` - Push tag to trigger release workflow
 
 Version Update Process:
-1. Check current version in `template-wp-plugin.php` header
+1. Check current version in `wp-plugin.php` header
 2. If version in file doesn't match the new tag, update the Plugin Version header
 3. Commit the version update before creating the tag
 4. Create the annotated git tag

@@ -20,7 +20,7 @@ This template follows absolute minimalism - start simple, add complexity only wh
 ## Minimal Plugin Structure
 
 Keep it simple:
-- Single main plugin file: `template-wp-plugin.php`
+- Single main plugin file: `wp-plugin.php`
 - Basic activation/deactivation hooks only
 - No complex class architecture unless required
 - No admin pages, assets, or translations unless needed
@@ -28,7 +28,7 @@ Keep it simple:
 ## Development Workflow
 
 1. Copy this template for new plugins
-2. Rename main plugin file: `template-wp-plugin.php` → `your-plugin.php`
+2. Rename main plugin file: `wp-plugin.php` → `your-plugin.php`
 3. Update plugin headers (name, description, author)
 4. Install dev dependencies: `composer install`
 5. Add functionality incrementally as needed

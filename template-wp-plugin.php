@@ -3,7 +3,7 @@
  * Plugin Name: Template WordPress Plugin
  * Plugin URI: https://github.com/svnscha/template-wp-plugin
  * Description: A minimal boilerplate for WordPress plugins.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Your Name
  * Author URI: https://yourwebsite.com
  * License: Apache 2.0

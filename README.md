@@ -1,8 +1,8 @@
 # WordPress Plugin Template
 
-The absolute minimal WordPress plugin template. Just the essentials - activation, deactivation, and code quality tools.
-
 ![Header](./assets/banner.png)
+
+The absolute minimal WordPress plugin template. Just the essentials - activation, deactivation, and code quality tools.
 
 ## Features
 

@@ -66,6 +66,8 @@ composer run lint:fix
 ```
 your-plugin-name/
 ├── .editorconfig         # Editor configuration
+├── .github/              # GitHub configuration
+│   └── prompts/          # Copilot workspace prompt files
 ├── .gitignore            # Git ignore rules
 ├── phpcs.xml             # WordPress Coding Standards config
 ├── composer.json         # PHP dependencies and scripts
@@ -88,6 +90,18 @@ your-plugin-name/
 - **WordPress Coding Standards**: Ensures your code follows WordPress coding standards and best practices
 - **PHP_CodeSniffer**: Automated code standards checking and fixing
 - **EditorConfig**: Consistent code formatting across different editors and IDEs
+
+### GitHub Copilot Prompt Files
+The template includes workspace-specific prompt files in `.github/prompts/` that provide specialized development assistance:
+
+- **`ws-commit.prompt.md`** - Review and commit changes with proper conventional commit messages
+- **`ws-review.prompt.md`** - Code review without committing, focusing on WordPress standards
+- **`ws-release.prompt.md`** - Manage plugin versioning and create releases with git tags
+- **`ws-update.prompt.md`** - Update and manage Composer dependencies safely
+
+These become available as slash commands in VS Code (e.g., `/ws-commit`, `/ws-review`) when using GitHub Copilot. They provide project-specific guidance and automate common WordPress plugin development tasks.
+
+**Learn more**: [How to extend GitHub Copilot with prompt files](https://svnscha.de/posts/howto-extend-copilot-with-prompt-files/)
 
 ## Adding Your Features
 

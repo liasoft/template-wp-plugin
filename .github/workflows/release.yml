@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        coverage: none
+        tools: composer
+        
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+      
+    - name: Run final lint check
+      run: composer run lint
+      
+    - name: Create release archive
+      run: |
+        mkdir -p release
+        rsync -av --exclude-from=.gitignore --exclude='.git*' --exclude='release' . release/
+        cd release
+        zip -r ../template-wp-plugin.zip .
+        
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: template-wp-plugin.zip
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

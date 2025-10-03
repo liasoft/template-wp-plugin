@@ -1,0 +1,22 @@
+{
+    "name": "svnscha/template-wp-plugin",
+    "description": "A minimal WordPress plugin template",
+    "type": "wordpress-plugin",
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=8.3"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.0",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "scripts": {
+        "lint": "phpcs",
+        "lint:fix": "phpcbf"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

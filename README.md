@@ -1,2 +1,142 @@
-# template-wp-plugin
-Minimal boilerplate for a WordPress Plugin
+# WordPress Plugin Template
+
+The absolute minimal WordPress plugin template. Just the essentials - activation, deactivation, and code quality tools.
+
+## Features
+
+- **WordPress Coding Standards** - WPCS with PHP_CodeSniffer for proper WordPress code formatting
+- **EditorConfig** - Consistent editor settings
+- **Minimal Structure** - Just the bare essentials, no bloat
+- **Plugin Hooks** - Basic activation and deactivation hooks ready to use
+
+## Quick Start
+
+### 1. Use This Template
+
+Click "Use this template" on GitHub or clone this repository:
+
+```bash
+git clone https://github.com/svnscha/template-wp-plugin.git my-new-plugin
+cd my-new-plugin
+```
+
+### 2. Rename Your Plugin
+
+Replace the following in `template-wp-plugin.php`:
+
+- `Template WordPress Plugin` → `Your Plugin Name` (Plugin Name header)
+- `A minimal boilerplate for WordPress plugins` → `Your plugin description`
+- `Your Name` → Your actual name
+- `https://yourwebsite.com` → Your website URL
+
+**Rename the main file:**
+```bash
+mv template-wp-plugin.php your-plugin-name.php
+```
+
+### 3. Install Development Dependencies
+
+```bash
+composer install
+```
+
+### 4. Development Workflow
+
+#### Code Quality
+
+```bash
+# Check code against WordPress Coding Standards
+composer run lint
+
+# Fix code style issues automatically
+composer run lint:fix
+```
+
+#### Testing Your Plugin
+
+1. Copy to WordPress plugins directory:
+   ```bash
+   cp -r . /path/to/wordpress/wp-content/plugins/your-plugin-name/
+   ```
+
+2. Activate in WordPress admin dashboard
+3. Your plugin is now active (it doesn't do anything yet - that's the point!)
+
+## Project Structure
+
+```
+your-plugin-name/
+├── .editorconfig          # Editor configuration
+├── .gitignore            # Git ignore rules
+├── phpcs.xml             # WordPress Coding Standards config
+├── composer.json         # PHP dependencies and scripts
+├── LICENSE               # GPL license
+├── README.md             # This file
+└── template-wp-plugin.php # Main plugin file (rename this)
+```
+
+## What's Included
+
+### Main Plugin File
+- WordPress plugin header with all required metadata
+- Direct access prevention
+- Plugin activation hook (empty, ready for your code)
+- Plugin deactivation hook (empty, ready for your code)
+
+### Development Tools
+- **WordPress Coding Standards**: Ensures your code follows WordPress best practices
+- **PHP_CodeSniffer**: Automated code quality checking
+- **EditorConfig**: Consistent formatting across different editors
+
+## Adding Your Features
+
+The template provides activation and deactivation hooks where you can add your plugin logic:
+
+```php
+/**
+ * Plugin activation hook.
+ */
+function template_wp_plugin_activate()
+{
+    // Add your activation logic here
+    // Example: Create database tables, add default options, etc.
+}
+
+/**
+ * Plugin deactivation hook.
+ */
+function template_wp_plugin_deactivate()
+{
+    // Add your deactivation logic here
+    // Example: Clean up temporary data, clear caches, etc.
+}
+```
+
+Add your plugin's main functionality after the hooks:
+
+```php
+// Add your plugin code here
+// Example: Register shortcodes, add admin menus, enqueue scripts, etc.
+```
+
+## Why So Minimal?
+
+This template follows the principle of **absolute minimalism**:
+
+- No unnecessary classes or complex architecture
+- No assets directory (add only if you need it)
+- No admin pages boilerplate (add only if you need it)
+- No translation files (add only if you need it)
+- No shortcodes or widgets (add only if you need it)
+
+**Start simple, add complexity only when needed.**
+
+## License
+
+This template is licensed under the Apache 2.0 License.
+
+## Support
+
+- [WordPress Plugin Handbook](https://developer.wordpress.org/plugins/)
+- [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/)
+- [GitHub Issues](https://github.com/svnscha/template-wp-plugin/issues)

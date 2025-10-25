@@ -36,12 +36,12 @@ jobs:
         ./scripts/validate-versions.sh
 
     - name: Create release archive
-      run: ./scripts/build-plugin.sh release wp-write-ai.zip
+      run: ./scripts/build-plugin.sh release wp-plugin.zip
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
-        files: wp-write-ai.zip
+        files: wp-plugin.zip
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

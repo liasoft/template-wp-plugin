@@ -20,6 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Define plugin constants.
+define( 'TEMPLATE_PLUGIN_VERSION', '1.0.2' );
+
 /**
  * Plugin activation hook.
  */

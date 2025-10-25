@@ -1,0 +1,17 @@
+{
+  "name": "WordPress Plugin Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig"
+      ]
+    }
+  },
+  "forwardPorts": [
+    24511
+  ],
+  "postCreateCommand": "bash .devcontainer/post-create.sh"
+}

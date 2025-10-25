@@ -12,35 +12,36 @@ jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v5
-      
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
         coverage: none
         tools: composer
-        
-    - name: Install dependencies
+
+    - name: Install PHP dependencies
       run: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader
-      
-    - name: Run final lint check
+
+    - name: Run final lint checks
       run: composer run lint
-      
-    - name: Create release archive
+
+    - name: Validate version consistency
       run: |
-        mkdir -p release
-        rsync -av --exclude-from=.gitignore --exclude='.git*' --exclude='release' . release/
-        cd release
-        zip -r ../wp-plugin.zip .
-        
+        echo "Validating version consistency across project files..."
+        ./scripts/validate-versions.sh
+
+    - name: Create release archive
+      run: ./scripts/build-plugin.sh release wp-write-ai.zip
+
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
-        files: wp-plugin.zip
+        files: wp-write-ai.zip
         generate_release_notes: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

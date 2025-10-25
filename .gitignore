@@ -34,3 +34,6 @@ debug.log
 # npm
 package-lock.json
 yarn.lock
+
+# Release
+release/

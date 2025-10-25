@@ -22,5 +22,12 @@ Review Focus Areas:
 - Documentation completeness
 - Error handling and edge cases
 - Potential breaking changes
+- Check if CHANGELOG.md needs updates for any new features, fixes, or changes
+
+Documentation Review:
+- Verify that significant changes are documented in CHANGELOG.md
+- Ensure README.md stays current with new features
+- Check that breaking changes are clearly noted
+- Confirm version numbers are consistent across files
 
 Do NOT stage or commit any changes. Only provide analysis and recommendations.

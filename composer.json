@@ -1,21 +1,21 @@
 {
-    "name": "liasoft/template-wp-plugin",
-    "description": "A minimal WordPress plugin template",
-    "type": "wordpress-plugin",
-    "license": "Apache-2.0",
-    "require": {
-        "php": ">=8.3"
-    },
-    "require-dev": {
-        "wp-coding-standards/wpcs": "^3.0"
-    },
-    "scripts": {
-        "lint": "phpcs",
-        "lint:fix": "phpcbf"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
+  "name": "liasoft/template-wp-plugin",
+  "description": "A minimal WordPress plugin template",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "require": {
+    "php": ">=8.3"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.0"
+  },
+  "scripts": {
+    "lint": "phpcs",
+    "lint:fix": "phpcbf"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
+  }
 }

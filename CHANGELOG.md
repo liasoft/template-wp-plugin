@@ -58,9 +58,9 @@ The first release of Template WordPress Plugin, providing a minimal boilerplate 
 
 - Tab indentation for PHP files (4 spaces width)
 - WordPress Coding Standards compliance
-- Apache 2.0 license
+- GPL-3.0-or-later license
 - PHP 8.3+ compatibility
-- WordPress 6.0+ compatibility
+- WordPress 6.5+ compatibility
 
 ---
 

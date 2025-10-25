@@ -74,7 +74,7 @@ your-plugin-name/
 ├── phpcs.xml             # WordPress Coding Standards config
 ├── composer.json         # PHP dependencies and scripts
 ├── composer.lock         # Dependency lock file
-├── LICENSE               # Apache 2.0 license
+├── LICENSE               # AGPL-3.0-or-later license
 ├── README.md             # This file
 ├── wp-plugin.php         # Main plugin file (rename this)
 └── vendor/               # Composer dependencies (after install)
@@ -147,7 +147,7 @@ This template follows the principle of **absolute minimalism**:
 
 ## License
 
-This template is licensed under the Apache 2.0 License.
+This template is licensed under the GPL-3.0-or-later License.
 
 ## Support
 

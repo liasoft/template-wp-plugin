@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Running post-create setup for WordPress Write AI Plugin..."
+echo "Running post-create setup for WordPress Plugin..."
 
 # Change to workspace directory
 cd /workspace || exit 1
@@ -8,6 +8,7 @@ cd /workspace || exit 1
 # Ensure proper ownership of volume directories
 echo "Setting up directory permissions..."
 sudo chown -R vscode:www-data /workspace/node_modules /workspace/vendor 2>/dev/null || true
+sudo chown -R vscode:www-data /var/www/html 2>/dev/null || true
 
 # Install PHP dependencies via Composer
 echo "Installing PHP dependencies..."
@@ -31,11 +32,76 @@ fi
 echo "Configuring git for dev container..."
 git config core.filemode false
 
+# ========================================
+# Automated WordPress Installation
+# ========================================
+echo ""
+echo "Setting up WordPress..."
+
+# WordPress configuration
+WP_URL="http://localhost:8000"
+WP_TITLE="WordPress Dev"
+WP_ADMIN_USER="admin"
+WP_ADMIN_PASSWORD="admin"
+WP_ADMIN_EMAIL="admin@example.com"
+
+# Wait for WordPress files to be available
+echo "Waiting for WordPress files..."
+attempt=0
+while [ ! -f "/var/www/html/wp-load.php" ]; do
+    attempt=$((attempt + 1))
+    if [ $attempt -ge $max_attempts ]; then
+        echo "WordPress files not found after $max_attempts attempts, skipping WordPress setup."
+        exit 0
+    fi
+    echo "  Attempt $attempt/$max_attempts - waiting for WordPress files..."
+    sleep 2
+done
+echo "WordPress files are ready!"
+
+# Check if WordPress is already installed
+if wp core is-installed --path=/var/www/html --allow-root 2>/dev/null; then
+    echo "WordPress is already installed!"
+else
+    # Install WordPress
+    echo "Installing WordPress..."
+    wp core install \
+        --path=/var/www/html \
+        --url="$WP_URL" \
+        --title="$WP_TITLE" \
+        --admin_user="$WP_ADMIN_USER" \
+        --admin_password="$WP_ADMIN_PASSWORD" \
+        --admin_email="$WP_ADMIN_EMAIL" \
+        --skip-email \
+        --allow-root
+
+    if [ $? -eq 0 ]; then
+        echo "WordPress installed successfully!"
+    else
+        echo "WordPress installation failed. You may need to install manually."
+    fi
+fi
+
+# Remove default plugins (Akismet and Hello Dolly)
+echo "Removing default plugins..."
+wp plugin deactivate akismet hello --path=/var/www/html --allow-root 2>/dev/null || true
+wp plugin delete akismet hello --path=/var/www/html --allow-root 2>/dev/null || true
+
+# Activate the plugin if it exists
+PLUGIN_DIR="/var/www/html/wp-content/plugins/template-wp-plugin"
+if [ -d "$PLUGIN_DIR" ]; then
+    echo "Activating plugin..."
+    wp plugin activate template-wp-plugin --path=/var/www/html --allow-root 2>/dev/null || true
+fi
+
 echo ""
 echo "=========================================="
-echo "WordPress Write AI Plugin Development Environment Ready!"
+echo "WordPress Plugin Development Environment Ready!"
 echo "=========================================="
-echo "WordPress Site: http://localhost:24511"
+echo "WordPress Site: $WP_URL"
+echo "Admin URL:      $WP_URL/wp-admin"
+echo "Admin User:     $WP_ADMIN_USER"
+echo "Admin Password: $WP_ADMIN_PASSWORD"
 echo ""
 echo "Available tools:"
 echo "- PHP $(php --version | head -n1)"

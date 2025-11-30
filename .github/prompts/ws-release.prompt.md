@@ -37,7 +37,7 @@ Version Update Process:
    - Add new version entry with current date
    - Include all changes since last release
    - Categorize changes (Added, Changed, Deprecated, Removed, Fixed, Security)
-2. Check current version in `wp-plugin.php` header
+2. Check current version in `template-wp-plugin.php` header
 3. If version in file doesn't match the new tag, update the Plugin Version header
 4. Commit any version and changelog updates before creating the tag
 5. Create the annotated git tag

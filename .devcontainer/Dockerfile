@@ -15,6 +15,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         libzip-dev \
         libxml2-dev \
         libonig-dev \
+        default-mysql-client \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions

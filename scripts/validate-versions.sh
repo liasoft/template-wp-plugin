@@ -2,14 +2,14 @@
 set -e
 
 # Get main version from plugin header
-VERSION=$(grep -oP "Version:\s*\K[\d\.]+" wp-plugin.php)
+VERSION=$(grep -oP "Version:\s*\K[\d\.]+" template-wp-plugin.php)
 ERRORS=0
 
 echo "Checking version consistency: $VERSION"
 
 # Check version constant (if exists)
-if grep -q "define.*VERSION" wp-plugin.php; then
-    CONST_VERSION=$(grep -oP "define\s*\([^']*'[^']*VERSION[^']*',\s*'\K[\d\.]+" wp-plugin.php)
+if grep -q "define.*VERSION" template-wp-plugin.php; then
+    CONST_VERSION=$(grep -oP "define\s*\([^']*'[^']*VERSION[^']*',\s*'\K[\d\.]+" template-wp-plugin.php)
     if [ "$VERSION" != "$CONST_VERSION" ]; then
         echo "❌ Plugin constant: $CONST_VERSION (should be $VERSION)"
         ERRORS=$((ERRORS + 1))

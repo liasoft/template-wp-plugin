@@ -41,9 +41,19 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
 RUN wget -O /usr/local/bin/wp https://github.com/wp-cli/wp-cli/releases/download/v2.8.1/wp-cli-2.8.1.phar \
     && chmod +x /usr/local/bin/wp
 
-# Create www-data group if it doesn't exist and add vscode user to it
-RUN groupadd -f www-data && usermod -a -G www-data vscode || true
+# Ensure www-data group exists and add vscode user to it
+# This allows vscode user to read/write files owned by www-data (Apache/WordPress)
+RUN getent group www-data || groupadd -g 33 www-data \
+    && usermod -a -G www-data vscode \
+    # Also ensure vscode's primary group can work with www-data files
+    && mkdir -p /var/www/html \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html
+
+# Set default umask so new files are group-writable
+RUN echo "umask 002" >> /home/vscode/.bashrc
 
 # Set working directory and ensure proper ownership
 WORKDIR /workspace
-RUN chown vscode:www-data /workspace
+RUN chown vscode:www-data /workspace \
+    && chmod 775 /workspace

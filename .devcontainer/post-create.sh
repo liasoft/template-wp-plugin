@@ -5,10 +5,27 @@ echo "Running post-create setup for WordPress Plugin..."
 # Change to workspace directory
 cd /workspace || exit 1
 
-# Ensure proper ownership of volume directories
+# Verify vscode user is in www-data group
+if groups vscode | grep -q '\bwww-data\b'; then
+    echo "✓ vscode user is in www-data group"
+else
+    echo "⚠ Adding vscode user to www-data group..."
+    sudo usermod -a -G www-data vscode
+fi
+
+# Set proper permissions for volume directories
+# Using group-writable permissions so both vscode and www-data can access
 echo "Setting up directory permissions..."
 sudo chown -R vscode:www-data /workspace/node_modules /workspace/vendor 2>/dev/null || true
-sudo chown -R vscode:www-data /var/www/html 2>/dev/null || true
+sudo chmod -R 775 /workspace/node_modules /workspace/vendor 2>/dev/null || true
+
+# Ensure WordPress directory has proper group ownership
+# Files should be owned by www-data but group-writable for vscode
+sudo chown -R www-data:www-data /var/www/html 2>/dev/null || true
+sudo chmod -R 775 /var/www/html 2>/dev/null || true
+
+# Set umask for this session to ensure new files are group-writable
+umask 002
 
 # Install PHP dependencies via Composer
 echo "Installing PHP dependencies..."

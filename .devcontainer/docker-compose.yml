@@ -21,6 +21,8 @@ services:
         source: wordpress_logs
         target: /var/log/apache2
     command: sleep infinity
+    # Run as vscode user but with www-data as supplementary group
+    user: vscode
     environment:
       - WORDPRESS_DB_HOST=db:3306
       - WORDPRESS_DB_NAME=wordpress

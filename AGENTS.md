@@ -4,6 +4,22 @@
 
 This template follows absolute minimalism - start simple, add complexity only when needed.
 
+## Template Initialization
+
+For new plugins based on this template, use the automated initialization:
+
+1. Edit `template.json` with your plugin details
+2. Run `python3 scripts/init-repo.py --dry-run` to preview changes
+3. Run `python3 scripts/init-repo.py` to apply changes (resets changelog by default)
+4. Add `--keep-changelog` flag to preserve existing changelog
+
+The `template.json` file contains all configurable values:
+- Plugin name, slug, description, version, URI
+- Author name and URI
+- PHP namespace, function prefix, constant prefix
+- Composer package name
+- GitHub owner and repository
+
 ## Code Standards
 
 ### PHP Code Quality
@@ -27,9 +43,9 @@ Keep it simple:
 
 ## Development Workflow
 
-1. Copy this template for new plugins
-2. Rename main plugin file: `template-wp-plugin.php` → `your-plugin.php`
-3. Update plugin headers (name, description, author)
+1. Clone/fork this template for new plugins
+2. Edit `template.json` with your plugin details
+3. Run `python3 scripts/init-repo.py` to rebrand
 4. Install dev dependencies: `composer install`
 5. Add functionality incrementally as needed
 6. Run `composer run lint` before commits

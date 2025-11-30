@@ -1,0 +1,34 @@
+{
+  "plugin": {
+    "name": "Template WordPress Plugin",
+    "slug": "template-wp-plugin",
+    "description": "A minimal boilerplate for WordPress plugins.",
+    "version": "1.0.3",
+    "uri": "https://github.com/liasoft/template-wp-plugin"
+  },
+  "author": {
+    "name": "Liasoft GmbH",
+    "uri": "https://github.com/liasoft/template-wp-plugin"
+  },
+  "php": {
+    "namespace": "TemplateWPPlugin",
+    "function_prefix": "template_wp_plugin",
+    "constant_prefix": "TEMPLATE_PLUGIN"
+  },
+  "composer": {
+    "name": "liasoft/template-wp-plugin"
+  },
+  "github": {
+    "owner": "liasoft",
+    "repo": "template-wp-plugin"
+  },
+  "requirements": {
+    "php": "8.3",
+    "wordpress": "6.5",
+    "tested_up_to": "6.8"
+  },
+  "license": {
+    "name": "GPL-3.0-or-later",
+    "uri": "https://www.gnu.org/licenses/gpl-3.0.html"
+  }
+}

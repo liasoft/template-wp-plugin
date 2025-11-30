@@ -20,19 +20,77 @@ Click "Use this template" on GitHub or clone this repository:
 ```bash
 git clone https://github.com/liasoft/template-wp-plugin.git my-new-plugin
 cd my-new-plugin
+rm -rf .git && git init  # Start fresh git history
 ```
 
-### 2. Customize Your Plugin
+### 2. Customize Your Plugin (Automated)
+
+The easiest way to customize this template is using the initialization script:
+
+1. **Edit `template.json`** with your plugin details:
+
+```json
+{
+  "plugin": {
+    "name": "My Awesome Plugin",
+    "slug": "my-awesome-plugin",
+    "description": "Does awesome things for WordPress.",
+    "version": "1.0.0",
+    "uri": "https://github.com/yourname/my-awesome-plugin"
+  },
+  "author": {
+    "name": "Your Name",
+    "uri": "https://yourwebsite.com"
+  },
+  "php": {
+    "namespace": "MyAwesomePlugin",
+    "function_prefix": "my_awesome_plugin",
+    "constant_prefix": "MY_AWESOME_PLUGIN"
+  },
+  "composer": {
+    "name": "yourname/my-awesome-plugin"
+  },
+  "github": {
+    "owner": "yourname",
+    "repo": "my-awesome-plugin"
+  }
+}
+```
+
+2. **Run the initialization script**:
+
+```bash
+# Preview changes (dry run)
+python scripts/init-repo.py --dry-run
+
+# Apply changes (resets changelog by default)
+python scripts/init-repo.py
+
+# Apply changes but keep existing changelog
+python scripts/init-repo.py --keep-changelog
+```
+
+The script will:
+- Replace all template placeholders across all files
+- Rename `template-wp-plugin.php` to `your-plugin-slug.php`
+- Update version validation scripts
+- Reset the changelog for a fresh start (use `--keep-changelog` to preserve it)
+
+### 2b. Customize Your Plugin (Manual)
+
+Alternatively, you can manually customize:
 
 1. **Rename the main plugin file**: `template-wp-plugin.php` → `your-plugin-name.php`
 
 2. **Update plugin headers** in your renamed file:
    - `Template WordPress Plugin` → `Your Plugin Name`
    - `A minimal boilerplate for WordPress plugins` → `Your plugin description`
-   - `Your Name` → Your actual name
-   - `https://yourwebsite.com` → Your website URL
+   - `Liasoft GmbH` → Your name
+   - Update all URLs to your repository
 
 3. **Update function names** to match your plugin (replace `template_wp_plugin` prefix)
+
+4. **Update these files**: `composer.json`, `README.md`, `CHANGELOG.md`, `phpcs.xml`
 
 
 ### 3. Install Development Dependencies
@@ -69,14 +127,21 @@ composer run lint:fix
 your-plugin-name/
 ├── .editorconfig         # Editor configuration
 ├── .github/              # GitHub configuration
-│   └── prompts/          # Copilot workspace prompt files
+│   ├── prompts/          # Copilot workspace prompt files
+│   └── workflows/        # CI/CD workflows
 ├── .gitignore            # Git ignore rules
+├── assets/               # Plugin assets (banner, icons)
+├── scripts/              # Development scripts
+│   ├── build-plugin.sh   # Build and package plugin
+│   ├── init-repo.py      # Template initialization script
+│   └── validate-versions.sh  # Version consistency checker
 ├── phpcs.xml             # WordPress Coding Standards config
 ├── composer.json         # PHP dependencies and scripts
 ├── composer.lock         # Dependency lock file
-├── LICENSE               # AGPL-3.0-or-later license
+├── template.json         # Template configuration (edit this first!)
+├── LICENSE               # GPL-3.0-or-later license
 ├── README.md             # This file
-├── template-wp-plugin.php         # Main plugin file (rename this)
+├── template-wp-plugin.php # Main plugin file (rename this)
 └── vendor/               # Composer dependencies (after install)
 ```
 

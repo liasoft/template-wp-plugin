@@ -10,8 +10,5 @@
       ]
     }
   },
-  "forwardPorts": [
-    24511
-  ],
   "postCreateCommand": "bash .devcontainer/post-create.sh"
 }

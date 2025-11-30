@@ -65,6 +65,7 @@ WP_ADMIN_EMAIL="admin@example.com"
 # Wait for WordPress files to be available
 echo "Waiting for WordPress files..."
 attempt=0
+max_attempts=30
 while [ ! -f "/var/www/html/wp-load.php" ]; do
     attempt=$((attempt + 1))
     if [ $attempt -ge $max_attempts ]; then
@@ -75,6 +76,21 @@ while [ ! -f "/var/www/html/wp-load.php" ]; do
     sleep 2
 done
 echo "WordPress files are ready!"
+
+# Wait for database to be ready
+echo "Waiting for database to be ready..."
+attempt=0
+max_attempts=30
+while ! mysqladmin ping -h "db" --silent 2>/dev/null; do
+    attempt=$((attempt + 1))
+    if [ $attempt -ge $max_attempts ]; then
+        echo "Database not ready after $max_attempts attempts, skipping WordPress setup."
+        exit 0
+    fi
+    echo "  Attempt $attempt/$max_attempts - waiting for database..."
+    sleep 2
+done
+echo "Database is ready!"
 
 # Check if WordPress is already installed
 if wp core is-installed --path=/var/www/html --allow-root 2>/dev/null; then

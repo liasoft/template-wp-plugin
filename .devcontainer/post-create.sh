@@ -8,6 +8,7 @@ cd /workspace || exit 1
 # Ensure proper ownership of volume directories
 echo "Setting up directory permissions..."
 sudo chown -R vscode:www-data /workspace/node_modules /workspace/vendor 2>/dev/null || true
+sudo chown -R vscode:www-data /var/www/html 2>/dev/null || true
 
 # Install PHP dependencies via Composer
 echo "Installing PHP dependencies..."
@@ -83,6 +84,7 @@ fi
 
 # Remove default plugins (Akismet and Hello Dolly)
 echo "Removing default plugins..."
+wp plugin deactivate akismet hello --path=/var/www/html --allow-root 2>/dev/null || true
 wp plugin delete akismet hello --path=/var/www/html --allow-root 2>/dev/null || true
 
 # Activate the plugin if it exists

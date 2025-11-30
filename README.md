@@ -24,7 +24,7 @@ cd my-new-plugin
 
 ### 2. Customize Your Plugin
 
-1. **Rename the main plugin file**: `wp-plugin.php` → `your-plugin-name.php`
+1. **Rename the main plugin file**: `template-wp-plugin.php` → `your-plugin-name.php`
 
 2. **Update plugin headers** in your renamed file:
    - `Template WordPress Plugin` → `Your Plugin Name`
@@ -76,7 +76,7 @@ your-plugin-name/
 ├── composer.lock         # Dependency lock file
 ├── LICENSE               # AGPL-3.0-or-later license
 ├── README.md             # This file
-├── wp-plugin.php         # Main plugin file (rename this)
+├── template-wp-plugin.php         # Main plugin file (rename this)
 └── vendor/               # Composer dependencies (after install)
 ```
 

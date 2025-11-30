@@ -96,6 +96,6 @@ jobs:
     - name: Upload plugin artifact
       uses: actions/upload-artifact@v5
       with:
-        name: wp-plugin
+        name: template-wp-plugin
         path: release/
         retention-days: 30

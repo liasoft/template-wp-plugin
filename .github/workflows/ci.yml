@@ -94,7 +94,7 @@ jobs:
         ./scripts/build-plugin.sh release
 
     - name: Upload plugin artifact
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: template-wp-plugin
         path: release/
